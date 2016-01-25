@@ -1,0 +1,231 @@
+\documentclass[11pt,preprint]{aastex}
+\usepackage{natbib}
+\bibliographystyle{apj}
+\usepackage{amsmath}
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+\newcommand{\sgra}{Sgr~A$^{\ast}$}
+\defcitealias{jg15}{JG15}
+
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand{\myemail}{}
+\newcommand{\beq}[1]{\begin{equation}\label{#1}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\unten}[1]{$_{\rm{#1}}$}
+\newcommand{\tothe}[1]{$^{\rm{#1}}$}
+\newcommand{\posion}[1]{$_{\rm{#1}}^{\rm{+}}$}
+\DeclareGraphicsRule{.pdftex}{pdf}{*}{}
+
+\shorttitle{Scattering}
+\shortauthors{Rosenfeld}
+
+\begin{document}
+
+\title{TITLE}
+
+\author{AUTHORS\altaffilmark{1}}
+\altaffiltext{1}{Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA}
+
+\begin{abstract}
+
+ABSTRACT
+
+\end{abstract}
+
+\keywords{KEYWORDS}
+
+\section{Introduction} \label{intro}
+
+Irregularities in the ionized interstellar medium (ISM) scatter radio waves, 
+leading to familiar effects, such as scintillation of sources.  For 
+sources that can be spatially resolved, the scattering also causes blurring and
+distortion of the image, analogous to the deleterious effects of the atmosphere 
+on optical observations.  Hence, as radio observations achieve ever higher 
+angular resolution, these effects of the ISM on imaging become increasingly 
+important considerations.  In this paper, we consider the effects of 
+interstellar scattering on resolved images of the Galactic Center supermassive 
+black hole, Sagittarius A$^\ast$ (\sgra).
+
+\sgra\ has been studied with very-long-baseline interferometry (VLBI) for the 
+last 40 years.  At wavelengths longer than a centimeter, the size of the image 
+of \sgra\ grows with the squared observing wavelength.  This scaling is typical 
+when the angular broadening of a source from ISM scattering is much larger than 
+the angular size of the source.  At wavelengths shorter than a centimeter, the 
+source angular size is larger than expected from this scaling, indicating the 
+presence of intrinsic structure in addition to the angular broadening.  The 
+shortest-wavelength VLBI observations to-date were performed at 1.3-mm with the 
+Event Horizon Telescope \citep{doeleman08,fish11}.  At this wavelength, 
+the angular broadening (${\sim}20~\mu{\rm as}$) is subdominant to intrinsic 
+structure (${\sim}40~\mu{\rm as}$). 
+
+Nevertheless, features such as a bright ring surrounding the ``shadow'' of the 
+black hole can still be affected by the residual scatter-broadening.   Recently,
+\citet{fish14} has shown that these effects can be effectively mitigated in 
+the ensemble-average regime, where the ``blurring'' of scattering is 
+deterministic.  Our goal is to use numerical simulations of the scattering to 
+investigate the potential contribution of scattering-induced substructure for 
+realistic images and observations.
+
+\subsection{Interstellar Scattering}
+
+The scattering of \sgra\ below about $2~{\rm THz}$ is ``strong'': the electric 
+field seen by the observer consists of the superposition of many rays from 
+different paths, whose phase from scattering differs by many radians across 
+the extent of the scattered image.  For strong scattering, effects are divided 
+into two distinct branches: diffractive and refractive. These branches have 
+strikingly different properties.
+
+Diffractive effects are narrowband, short-lived, and quenched by all but the 
+most compact sources, such as pulsars.  Refractive effects are wideband, 
+long-lived, and only begin to be quenched when a source exceeds the size of the 
+scattered image of a point source (i.e., when the effects of scatter-broadening 
+become subdominant to intrinsic structure).  Diffractive effects become stronger
+at longer wavelengths, whereas refractive effects become stronger at shorter 
+wavelengths.
+
+Scattering also exhibits two opposite effects depending on the degree of 
+averaging in time.  When averaged over long timescales (an ensemble-average), 
+scattering acts to blur the image of a source.  In contrast, over shorter 
+timescales, scattering introduces substructure in the image of the source, 
+exaggerating gradients in the unscattered image.  Remarkably, the substructure 
+can persist over long timescales, as was first shown by 
+\citet{ng89} and \citet{gn89}, and can be an important consideration even when 
+the scattering is subdominant to intrinsic structure, as was shown by 
+\citet[][hereafter JG15]{jg15}. 
+  
+State conditions for validity of the geometric optics approximation (recast 
+differently, with source coordinates rather than screen?):   
+
+\begin{align}
+\label{eq::Image_Approx}
+\nonumber I_{\rm ss}(\textbf{x}) &\approx \int d^2\textbf{y}\, 
+V_{\rm src}\left( (1+M) \textbf{y} \right)
+e^{-i \textbf{y} \cdot \nabla \phi(\textbf{x}) }
+e^{-\frac{i}{r_{\rm F}^{2}} \textbf{y}\cdot \textbf{x} }\\
+&=I_{\rm src}\left( \textbf{x} + r_{\rm F}^2 \nabla \phi(\textbf{x}) \right).
+\end{align}
+Note that the action of scattering shuffles brightness elements of the source 
+but does not conserve total flux.
+
+{\bf need definitions} In this limit, the frequency evolution of the scattering is especially simple. The Fresnel scale, $r_{\rm F}$, is proportional to $\sqrt{\lambda}$. The behavior of $\phi(\textbf{x})$ follows from the refractive index of a dilute plasma at a frequency well above its plasma frequency, $\nu_{\rm p}$: $n \approx 1 - \frac{1}{2} \frac{\nu_{\rm p}^2}{\nu^2}$. Hence, $\phi(\textbf{x}) \propto (n-1)/\lambda \propto \lambda$. Thus, in this regime, scattering displaces a given brightness element of the source by an amount proportional to $\lambda^2$. 
+
+Hence, we can rewrite the action of scattering as 
+$I_{\rm ss}(\textbf{x}) \approx I_{\rm src}\left( \textbf{x} + \left( \frac{\lambda}{\lambda_0} \right)^2 \textbf{s}_0(\textbf{x}) \right)$.  Once the vector 
+field $\textbf{s}_0(\textbf{x})$ is measured at a single wavelength $\lambda_0$ 
+over some angular domain $D$, the scattering can be inverted at all frequencies 
+over the same domain $D$.  If the intrinsic structure is sufficiently simple so 
+that scattering features can be identified, then one can use the comparison of 
+scattered images at different wavelengths to perform relative astrometry of 
+source components (cite quasar stuff). 
+
+A given solution at one observing wavelength can then be used to infer the 
+scattering properties at other wavelengths.  And because of the steep scaling 
+with wavelength, the scattering can be characterized at long wavelengths, where 
+scatter-broadening is easily measured, and then applied to shorter wavelengths, 
+where it is difficult to resolve or degenerate with structure from the 
+unscattered source.
+
+\section{Methods}
+
+Should define scattered versus source image.  Mention code here.
+
+\section{Scattering at different wavelengths}
+
+Show realizations of scattering at 0.87, 1.3, and 3 mm.
+
+\begin{figure}[t!]
+\plotone{figs/sims.eps}
+\figcaption{A source is shown in the left most panel and scattered instances of the
+same source at 0.87, 1.3, and 3$\,$mm are displayed from left to right.  All images are smoothed by a 3$\,\mu$as Gaussian.
+\label{fig:threelambda}}
+\end{figure}
+
+\section{Reconstruction of a scattered image}
+
+Show how Vincent's method works on these images.  Does averaging really 
+help for imaging with the bispectrum?  If not, can we estimate which baselines
+are garbage for imaging?
+
+\begin{figure}[t!]
+\plotone{figs/imaging.eps}
+\figcaption{These panels show images reconstructed using the bispectrum and the 
+maximum entropy algorithm.  The original images are the same ones as 
+shown in Figure \ref{fig:threelambda}.  The uv-samples were set by baselines 
+between the
+SMA, SMT, PV, ALMA, SPT, PDB, and LMT.  All images are smoothed by a Gaussian with FWHM of 10$\,\mu$as}
+\end{figure}
+
+\section{Ring Size}
+
+One application of EHT observations is measuring properties of 
+the photon ring.  This phenomenon traces where photons emitted from the 
+accretion disk wrap multiple times around the black hole, creating a brightness 
+concentration that outlines the black hole shadow.  The diameter of this ring
+is $3\sqrt{3}GM/c^2$ which corresponds to an angular size of 52 $\mu$as for 
+\sgra ($M_{\rm BH} = 4.3\times10^6\,M_\odot$ at a distance of $8.4\,$kpc).  The 
+shape of this ring is a powerful test of general relativity 
+with its shape and ellipticity indicating a possible deviation from the Kerr 
+metric \citep{johannsen10,johannsen15}.  Consequently, it is important to properly estimate the 
+uncertainties in the apparent ring shape due to distortion by scattering.
+
+We consider the source to be a uniform annulus with width to diameter
+ratio, $a = \Delta/d$, and the diameter, $d$, is the arithmetic mean of the 
+inner and outer edge of the annulus.  For this simple source, the visibility 
+amplitude is the different between two Bessel functions of the first kind:
+
+\begin{equation}
+|V_{\rm annulus}(\rho)| = \frac{ (1+a) J_1[\pi d (1+a) \rho]- (1-a)J_1[\pi d(1-a)\rho] 
+}{\pi d \rho}.
+\label{eq:annulus_vis}
+\end{equation}
+
+Equation \ref{eq:annulus_vis} shows that for a given width to diameter ratio 
+$a$, the first (or any) null can be used to determine the diameter of the 
+annulus, $d$.  The left panel in Figure \ref{fig:annulus_rms} shows the 
+position of the first null of the visibility amplitude as a function of $a$.  
+Using an annulus where $d = 57$ and $\Delta = 22$ (the fit from 
+\citet[][]{doeleman08}), we generate 50 independent instances the scattered 
+source and calculate a diameter using the
+position of the first 
+null along the major and minor axis of the scattering kernel.  The right panel
+in Figure \ref{fig:annulus_rms} shows the resulting rms error for observations 
+at 230 and 350$\,$GHz.  Even at 350$\,$GHz, the 1-$\sigma$ scatter is similar 
+to the shift between a ring $(a=0)$ and full disk $(a=1)$ source model.  For
+large enough ring sizes, the rms error appears to be independent of the ring
+size.  However, there is a significant increase in the rms for annulli 
+with diameters less than 40$\,\mu$as.  Here the scale of the scattering blur 
+$22\,\mu$as) is as large as the radius, filling in the inner hole and 
+introducing a bias towards smaller diameters.
+For an annulus with $d=50\,\mu$as, the mean eccentricity that 
+would be calculed using the major and minor axis diameters is 0.3 and 0.2 at 
+230 and 350$\,$ GHz.
+
+% Discuss eccentricity and asymmetry as defined by T. Johannsen?
+
+% Discuss motivation for this model: simplicity, really.
+
+% Discuss uncertainty in the kernel?  Maybe this should be its own section since
+% it affects everything.
+
+\begin{figure}[t!]
+\plottwo{figs/annulus_null.eps}{figs/rms.eps}
+\figcaption{{\it Left}: Position of the first null for a uniform annulus 
+as a funtion of its diameter to width ratio.  The gray line indicates the 
+annulus ratio, $a=22/57$, from the obsevations presented by 
+\citet{doeleman08}. {\it Right}:  The root mean square error introduced by 
+scattering on the derived annulus width.  Note that this effect is at least as 
+large as the shift in the null going from a ring $(a=0)$ to a full disk $(a=1)$.
+\label{fig:annulus_rms}}
+\end{figure}
+
+\section{Uncertainty in the scattering parameters}
+
+\section{Conclusion} \label{conclusion}
+
+\acknowledgments 
+
+\clearpage
+
+\bibliography{scattering}
+\end{document}

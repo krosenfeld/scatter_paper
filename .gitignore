@@ -1,0 +1,10 @@
+*.bbl
+*.aux
+*.dvi
+*.blg
+*.log
+*.swp
+*tar.gz
+compile
+*-eps-converted-to*
+kr_092713
